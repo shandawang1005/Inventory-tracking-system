@@ -10,4 +10,13 @@ export default defineConfig({
       "@utils": "/src/utils",
     },
   },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://localhost:5000", // ✅ 代理 API 请求到后端端口
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

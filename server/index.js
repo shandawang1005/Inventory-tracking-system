@@ -22,6 +22,7 @@ app.use(csrfProtection);
 
 // ✅ 让前端获取 CSRF Token
 app.get("/api/csrf-token", (req, res) => {
+    console.log("✅ 服务器返回 CSRF Token:", req.csrfToken()); // ✅ 先打印出来
     res.json({ csrfToken: req.csrfToken() });
 });
 

@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 // ✅ 1️⃣ 定义初始状态
 const initialState = {
   token: localStorage.getItem("token") || null,
@@ -26,7 +27,7 @@ const logoutAction = () => ({
 export const login =
   (email: string, password: string) => async (dispatch: Dispatch) => {
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +49,7 @@ export const login =
 
 export const logout = () => async (dispatch: Dispatch) => {
   try {
-    const res = await fetch("/api/auth/logout", {
+    const res = await fetch(`${API_BASE_URL}/api/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
